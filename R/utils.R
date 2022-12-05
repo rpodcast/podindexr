@@ -22,6 +22,7 @@ create_user_agent <- function() {
   "podindexr (https://rpodcast.github.io/podindexr)"
 }
 
-create_epoch_time <- function() {
-  as.numeric(as.POSIXlt(Sys.time(), "GMT"))
+create_epoch_time <- function(x = NULL) {
+  if (is.null(x)) x <- Sys.time()
+  as.numeric(as.POSIXlt(x, "GMT"))
 }
