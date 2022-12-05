@@ -2,16 +2,22 @@
 #'
 #' @return An [httr2::request] object
 #' @noRd
-req_podcastindex <- function() {
-  epoch_time <- create_epoch_time()
-  httr2::request("https://api.podcastindex.org/api/1.0") |>
-    httr2::req_user_agent(create_user_agent()) |>
-    httr2::req_headers(
-      `X-Auth-Date` = epoch_time,
-      `X-Auth-Key` = get_podcastindex_api_keys()$api_key,
-      Authorization = create_hash(epoch_time),
-      Accept = "application/json"
-    )
+req_podcastindex <- function(auth = TRUE, apple = FALSE) {
+
+  req <- httr2::request(create_base_url(apple = apple)) |>
+    httr2::req_user_agent(create_user_agent())
+
+  if (auth) {
+    epoch_time <- create_epoch_time()
+    req <- req |>
+      httr2::req_headers(
+        `X-Auth-Date` = epoch_time,
+        `X-Auth-Key` = get_podcastindex_api_keys()$api_key,
+        Authorization = create_hash(epoch_time),
+        Accept = "application/json"
+      )
+  }
+  return(req)
 }
 
 #' Create data frame from podcastindex API request
