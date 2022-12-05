@@ -24,7 +24,7 @@ get_podcastindex_api_keys <- function() {
 #'   created with the `digest` package
 #' @export
 create_hash <- function(epoch_time = NULL) {
-  if (is.null(epoch_time)) epoch_time <- as.numeric(as.POSIXlt(Sys.time(), "GMT"))
+  if (is.null(epoch_time)) epoch_time <- create_epoch_time()
   hash_input <- paste0(
     get_podcastindex_api_keys()$api_key,
     get_podcastindex_api_keys()$api_secret,

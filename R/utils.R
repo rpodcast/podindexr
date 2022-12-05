@@ -21,3 +21,7 @@ is_testing <- function() {
 create_user_agent <- function() {
   "podindexr (https://rpodcast.github.io/podindexr)"
 }
+
+create_epoch_time <- function() {
+  as.numeric(as.POSIXlt(Sys.time(), "GMT"))
+}
