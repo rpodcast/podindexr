@@ -17,6 +17,7 @@ Depends:
 Imports: 
     cli,
     digest,
+    glue,
     httr2,
     purrr,
     rlang,

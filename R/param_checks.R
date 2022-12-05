@@ -1,6 +1,6 @@
 check_max <- function(x, arg_name = "max") {
   if (!rlang::is_scalar_double(x) || is.na(x) || x < 1 || x > 1000) {
-    cli::cli_abort("{.arg {arg_name}} must be a single value between 1 and 1000") # noling
+    cli::cli_abort("{.arg {arg_name}} must be a single value between 1 and 1000") # nolint
   }
   x
 }
@@ -22,4 +22,12 @@ check_datetime <- function(x, arg_name = "since") {
     cli::cli_abort("{.arg {arg_name}} must be a string with format YYYY-MM-DD")
   }
   create_epoch_time(x)
+}
+
+check_cat_terms <- function(x, arg_name = c("cat_terms", "notcat_terms")) {
+  arg_name <- rlang::arg_match(arg_name)
+  if (!rlang::is_character(x) || length(x) < 1) {
+    cli::cli_abort("{.arg {arg_name}} must be a character vector of length 1 or more")
+  }
+  glue::glue_collapse(x, sep = ",")
 }
