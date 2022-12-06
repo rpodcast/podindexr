@@ -7,6 +7,13 @@ env_var_present <- function(env_var) {
   }
 }
 
+
+#' Detect if podcastindex API key/secret pair is defined
+#'
+#' @return boolean, TRUE if both `PODCASTINDEX_API_KEY` and
+#'   `PODCASTINDEX_API_SECRET` environment variables are defined
+#'   in the current R session.
+#' @export
 podcastindex_api_isset <- function() {
   all(
     env_var_present("PODCASTINDEX_API_KEY"),

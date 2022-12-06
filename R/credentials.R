@@ -1,5 +1,7 @@
-#' Obtain podcastindex API keys
+#' Obtain podcastindex API key and secret pair
 #'
+#' Obtain the podcastindex API key and secret values from a `.Renviron`
+#' file, either stored in the current directory or the user's home directory.
 #' @return list with API key and API secret values
 #' @export
 get_podcastindex_api_keys <- function() {
@@ -16,6 +18,9 @@ get_podcastindex_api_keys <- function() {
 }
 
 #' Create podcastindex authentication token
+#'
+#' Create a custom authentication token required by the podcastindex api
+#' utilizing the podcastindex API key and secret pair
 #'
 #' @param epoch_time string of time in UTC unix format. If NULL, the current
 #'   system time will be used.
