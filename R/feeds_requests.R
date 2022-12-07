@@ -123,3 +123,121 @@ feeds_new <- function(max = 60, since = NULL, feedid = NULL, desc = FALSE) {
   res_df <- process_podcastindex_req(result_raw, "feeds")
   return(res_df)
 }
+
+#' Get podcast feeds supporting value tag
+#'
+#' `feeds_withvalue` obtains all feeds from the Podcast Index database that
+#' support the `value` tag in the podcast namespace
+#'
+#' @return `tibble` data frame with metadata associated with feeds
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Requires API key and secret
+#'
+#' feeds_withvalue()
+#' }
+feeds_withvalue <- function() {
+  result_raw <- req_podcastindex() |>
+    httr2::req_url_path_append(
+      "podcasts",
+      "bytag"
+    ) |>
+    httr2::req_url_query(`podcast-value` = "") |>
+    httr2::req_perform()
+
+  res_df <- process_podcastindex_req(result_raw, "feed")
+  return(res_df)
+}
+
+#' Get podcast feeds by medium
+#'
+#' `feeds_bymedium` obtains all feeds marked with the specified medium tag
+#' value.
+#'
+#' @param medium character string of medium to search for. Must be one of
+#'   `audiobook`, `blog`, `film`, `music`, `newsletter`, `podcast,` or `video`
+#'
+#' @return `tibble` data frame with metadata associated with feeds
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Requires API key and secret
+#'
+#' feeds_bymedium(medium = "film")
+#' }
+feeds_bymedium <- function(medium = c("audiobook", "blog", "film", "music", "newsletter", "podcast", "video")) {
+  medium <- rlang::arg_match(medium)
+
+  result_raw <- req_podcastindex() |>
+    httr2::req_url_path_append(
+      "podcasts",
+      "bytag"
+    ) |>
+    httr2::req_url_query(medium = medium) |>
+    httr2::req_perform()
+
+  res_df <- process_podcastindex_req(result_raw, "feed")
+  return(res_df)
+}
+
+#' Get trending podcast feeds
+#'
+#' `feeds_trending()` obtains the feeds in the Podcast Index that are trending.
+#'
+#' @inheritParams feeds_recent
+#'
+#' @return `tibble` data frame with metadata associated with feeds
+#' @export
+feeds_trending <- function(max = 10, lang = "en", since = NULL, cat_terms = NULL, notcat_terms = NULL) {
+  # perform checks for key parameters
+  max <- check_max(max)
+  if (!is.null(since)) {
+    since <- check_datetime(since)
+  }
+
+  if (!is.null(cat_terms)) {
+    cat_terms <- check_cat_terms(cat_terms, "cat_terms")
+  }
+
+  if (!is.null(notcat_terms)) {
+    notcat_terms <- check_cat_terms(notcat_terms, "notcat_terms")
+  }
+
+  result_query <- req_podcastindex() |>
+    httr2::req_url_path_append(
+      "podcasts",
+      "trending"
+    )
+
+  if (!is.null(cat_terms) || !is.null(notcat_terms)) {
+    result_query <- result_query |>
+      httr2::req_url_query(
+        cat = cat_terms,
+        notcat = notcat_terms
+      ) |>
+      httr2::req_url(utils::URLdecode(result_query$url))
+
+    result_query <- result_query |>
+      httr2::req_url_query(
+        lang = lang,
+        max = max,
+        since = since)
+  } else {
+    result_query <- result_query |>
+      httr2::req_url_query(
+        lang = lang,
+        max = max,
+        since = since,
+        cat = cat_terms,
+        notcat = notcat_terms)
+  }
+
+  result_raw <- httr2::req_perform(result_query)
+
+  res_df <- process_podcastindex_req(result_raw, "feeds")
+  return(res_df)
+}
+
