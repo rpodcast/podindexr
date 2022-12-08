@@ -4,6 +4,9 @@
 # podindexr <img src='man/figures/logo.png' align="right" width="25%" min-width="120px"/>
 
 <!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 `podindexr` is an R package providing a tidy interface to the [Podcast
