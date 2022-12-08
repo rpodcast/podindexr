@@ -5,3 +5,4 @@
 ^\.Renviron$
 ^dev$
 ^\.github$
+^docs$
