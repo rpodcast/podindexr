@@ -1,13 +1,15 @@
 Package: podindexr
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: A Podcast Index API Library for R
+Version: 0.1.0
 Authors@R: 
     person(given = "Eric", 
            family = "Nantz",
            role = c("aut", "cre"),
            email = "theRcast@gmail.com",
            comment = c(ORCID = "0000-0001-8104-7510"))
-Description: What the package does (one paragraph).
+Description: Access and download data from the Podcast Index Database
+    directly from R using the 'PodcastIndex' 
+    <https://podcastindex-org.github.io/docs-api> API.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
