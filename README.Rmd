@@ -37,7 +37,7 @@ The majority of the API endpoints supported by `podindexr` require an API key an
 
 ## Usage
 
-For a comprehensive overview of the package functionality, visit the documentation site (LINK TBD). Below are examples of obtaining metadata associated with the [RWeekly Highlights](https://rweekly.org) podcast:
+For a comprehensive overview of the package functionality, visit the documentation site [rpodcast.github.io/podindexr](https://rpodcast.github.io/podindexr). Below are examples of obtaining metadata associated with the [RWeekly Highlights](https://rweekly.org) podcast:
 
 ### Search
 

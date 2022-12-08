@@ -37,8 +37,10 @@ user-directory `.Renviron` file.
 ## Usage
 
 For a comprehensive overview of the package functionality, visit the
-documentation site (LINK TBD). Below are examples of obtaining metadata
-associated with the [RWeekly Highlights](https://rweekly.org) podcast:
+documentation site
+[rpodcast.github.io/podindexr](https://rpodcast.github.io/podindexr).
+Below are examples of obtaining metadata associated with the [RWeekly
+Highlights](https://rweekly.org) podcast:
 
 ### Search
 
