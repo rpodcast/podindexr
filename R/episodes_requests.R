@@ -24,19 +24,28 @@ episodes_byfeedid <- function(feedid, max = 10, fulltext = FALSE, since = NULL) 
     since <- check_datetime(since)
   }
 
+  result_query <- req_podcastindex() |>
+    httr2::req_url_path_append("episodes", "byfeedid")
+
   if (length(feedid) > 1) {
     feedid <- glue::glue_collapse(feedid, ",")
+    result_query <- result_query |>
+      httr2::req_url_query(id = feedid) |>
+      httr2::req_url(utils::URLdecode(result_query$url)) |>
+      httr2::req_url_query(
+        max = max,
+        fulltext = fulltext,
+        since = since)
+  } else {
+    result_query <- result_query |>
+      httr2::req_url_query(
+        id = feedid,
+        max = max,
+        fulltext = fulltext,
+        since = since)
   }
 
-  result_raw <- req_podcastindex() |>
-    httr2::req_url_path_append("episodes", "byfeedid") |>
-    httr2::req_url_query(id = feedid) |>
-    httr2::req_url(utils::URLdecode(result_query$url)) |>
-    httr2::req_url_query(
-      max = max,
-      fulltext = fulltext,
-      since = since) |>
-    httr2::req_perform()
+  result_raw <- httr2::req_perform(result_query)
 
   res_df <- process_podcastindex_req(result_raw, "items")
   return(res_df)
