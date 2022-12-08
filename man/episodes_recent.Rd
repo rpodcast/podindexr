@@ -21,6 +21,10 @@ with title or URL containing the specified string.}
 \item{before}{episode ID string that when specified will only return
 episodes created before the specified episode ID, allowing you to walk back
 through episode history sequentially.}
+
+\item{fulltext}{boolean to return the full text value of any text fields
+within the result data. If set to FALSE, all text fields are truncated
+to 100 words.}
 }
 \value{
 \code{tibble} data frame with metadata associated with episodes

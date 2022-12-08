@@ -70,7 +70,7 @@ podcasts_byitunesid <- function(itunesid) {
       "podcasts",
       "byitunesid"
     ) |>
-    httr2::req_url_query(itunesid = itunesid) |>
+    httr2::req_url_query(id = itunesid) |>
     httr2::req_perform()
 
   res_df <- process_podcastindex_req(result_raw, "feed")
@@ -81,7 +81,7 @@ podcasts_byitunesid <- function(itunesid) {
 #'
 #' `podcasts_byfeedguid()` obtains all available metadata from the Podcast
 #' Index database associated with a particular feed GUID
-#' @param feedid string representing a Podcast Index feed GUID
+#' @param guid string representing a Podcast Index feed GUID
 #'
 #' @return `tibble` data frame with metadata associated with feed
 #' @export
@@ -89,7 +89,7 @@ podcasts_byitunesid <- function(itunesid) {
 #' @examplesIf podindexr::podcastindex_api_isset()
 #' # Requires API key and secret
 #'
-#' podcasts_byfeedguid(guid = "9b024349-ccf0-5f69-a609-6b82873eab3c")
+#' podcasts_byguid(guid = "9b024349-ccf0-5f69-a609-6b82873eab3c")
 podcasts_byguid <- function(guid) {
   result_raw <- req_podcastindex() |>
     httr2::req_url_path_append(

@@ -25,6 +25,10 @@ when specified will only return podcasts/episodes under those categories.}
 \item{notcat_terms}{optional character vector of one or more categories that
 when specified will only return podcasts/episodes not under those
 categories.}
+
+\item{fulltext}{boolean to return the full text value of any text fields
+within the result data. If set to FALSE, all text fields are truncated
+to 100 words.}
 }
 \value{
 \code{tibble} data frame with metadata associated with episodes

@@ -204,6 +204,7 @@ episodes_live <- function(max = 10) {
 #' from the Podcast Index database
 #'
 #' @inheritParams feeds_recent
+#' @inheritParams search_byterm
 #'
 #' @return `tibble` data frame with metadata associated with episodes
 #' @export
@@ -264,6 +265,7 @@ episodes_random <- function(max = 2, lang = "en", cat_terms = NULL, notcat_terms
 #' chronological order.
 #'
 #' @inheritParams feeds_recent
+#' @inheritParams search_byterm
 #' @param exclude_string character string used to exclude any episodes
 #'   with title or URL containing the specified string.
 #' @param before episode ID string that when specified will only return
