@@ -83,3 +83,10 @@ episodes_byfeedid(1062040)
 #> #   ²​datePublished, ³​datePublishedPretty, ⁴​dateCrawled, ⁵​enclosureUrl,
 #> #   ⁶​enclosureType
 ```
+
+## Code of Conduct
+
+Please note that the podindexr project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
