@@ -38,10 +38,12 @@ process_podcastindex_req <- function(req, slot) {
   res_list <- purrr::compact(res_list)
 
   if (is.null(names(res_list))) {
-    res_df <- purrr::map_dfr(res_list, ~{
+    res_df <- purrr::map(res_list, ~{
       x_list <- purrr::compact(.x)
       tibble::as_tibble(purrr::modify_if(x_list, ~length(.x) > 1, list))
     })
+
+    res_df <- dplyr::bind_rows(res_df)
   } else {
     res_df <- tibble::as_tibble(purrr::modify_if(res_list, ~length(.x) > 1, list))
   }
