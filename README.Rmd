@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 
 This package is my first contribution to the Podcast 2.0 movement, and I want to thank the following people/organizations for enabling me to create this package:
 
-* [Adam Curry](https://podcastindex.social/@adam) and [Dave Jones](https://podcastindex.social/@dave) for creating the [Podcast Index](https://podcastindex.org) and answering all of my many questions. I highly recommend listening to their [Podcating 2.0](https://podcastindex.org/podcast/920666) show for the latest developments in the Podcasting 2.0 ecosystem!
+* [Adam Curry](https://podcastindex.social/@adam) and [Dave Jones](https://podcastindex.social/@dave) for creating the [Podcast Index](https://podcastindex.org) and answering all of my many questions. I highly recommend listening to their [Podcasting 2.0](https://podcastindex.org/podcast/920666) show for the latest developments in the Podcasting 2.0 ecosystem!
 * [Hadley Wickham](https://hadley.nz/) for creating the [{httr2}](https://httr2.r-lib.org/index.html) R package as well as his many contributions to the R community.
 * [Scott Chamberlain](https://fosstodon.org/@sckottie) and [Maëlle Salmon](https://masalmon.eu/) for authoring the [HTTP testing in R](https://books.ropensci.org/http-testing/index.html) online book, which is an excellent resource for how you can build automated testing efficiently in R packages utilizing APIs.
 * [Jenny Bryan](https://jennybryan.org/about/) & Hadley Wickham for authoring the comprehensive [R Packages](https://r-pkgs.org/) book.
